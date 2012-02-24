@@ -1,6 +1,6 @@
 # NuRep
 
-NuRep is a NuGet repository that also servers symbols and sources
+NuRep is a NuGet repository that also serves symbols and sources.
 
 Install NuRep on your dev site, publish both nupkg and symbols.nupkg at http://myserver/NuRep
 
@@ -10,4 +10,4 @@ Don't forget to Enable source server support and disable Just My code.
 
 have fun.
 
-jeremie / thinkbeforcoding
+jeremie / thinkbeforecoding
