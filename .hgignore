@@ -1,0 +1,11 @@
+syntax: glob
+_ReSharper**
+**/obj/
+**/bin/
+**.suo
+NuRep/App_Data/*.xml
+NuRep/SymbolPackages/*.nupkg
+**.user
+NuRep/Packages/*.nupkg
+NuRep/Symbols/**
+packages/**
