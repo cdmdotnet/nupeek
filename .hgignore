@@ -9,3 +9,4 @@ NuRep/SymbolPackages/*.nupkg
 NuRep/Packages/*.nupkg
 NuRep/Symbols/**
 packages/**
+bin/

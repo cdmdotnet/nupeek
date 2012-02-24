@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Go" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="Go" DependsOnTargets="CreateDirectories;BuildProjects;CreatePackages" />
+
+  <PropertyGroup>
+    <RootDir>$(MSBuildProjectDirectory)/..</RootDir>
+    <NuGet>$(RootDir)/.nuget/nuget.exe</NuGet>
+    <DropDir>$(RootDir)/bin</DropDir>
+    <NuGetDropDir>$(DropDir)/NuGet</NuGetDropDir>
+    <NuRepWorkDir>$(RootDir)/NuRep</NuRepWorkDir>
+  </PropertyGroup>
+
+  <Target Name="CreateDirectories">
+    <MakeDir Directories="$(NuGetDropDir)" Condition="!Exists('$(NuGetDropDir)')" />
+  </Target>
+  
+  <Target Name="BuildProjects">
+    <MSBuild Projects="$(NuRepWorkDir)/NuRep.csproj" Targets="Clean;Build" Properties="Configuration=Release;Platform=AnyCPU" />
+  </Target>
+
+  <Target Name="CreatePackages">
+    <Exec Command="&quot;$(NuGet)&quot; pack NuRep.csproj -Symbols -Build -Properties &quot;Configuration=Release;Platform=AnyCPU&quot; -o &quot;$(NuGetDropDir)&quot;" WorkingDirectory="$(NuRepWorkDir)" />  
+  </Target>
+</Project>
