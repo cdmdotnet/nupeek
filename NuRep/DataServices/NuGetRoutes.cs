@@ -6,7 +6,7 @@ using NuGet.Server;
 using NuGet.Server.DataServices;
 using NuGet.Server.Infrastructure;
 using RouteMagic;
-#if DEBUG
+#if DEBUG || DEPLOY
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(NuRep.NuGetRoutes), "Start")]
 

@@ -18,10 +18,11 @@
   
   <Target Name="BuildProjects">
     <MSBuild Projects="$(NuRepWorkDir)/NuRep.csproj" Targets="Rebuild" Properties="Configuration=Release;Platform=AnyCPU" />
+    <MSBuild Projects="$(NuRepWorkDir)/NuRep.csproj" Targets="Rebuild" Properties="Configuration=Deploy;Platform=AnyCPU" />
   </Target>
 
   <Target Name="CreatePackages">
     <Exec Command="&quot;$(NuGet)&quot; pack NuRep.csproj -Symbols -Build -Properties &quot;Configuration=Release;Platform=AnyCPU&quot; -o &quot;$(NuGetDropDir)&quot;" WorkingDirectory="$(NuRepWorkDir)" />
-    <MSBuild Projects="$(NuRepWorkDir)/NuRep.csproj" Targets="Package" Properties="Configuration=Release;Platform=AnyCPU;_PackageTempDir=$(NuRepDropDir)"/>
+    <MSBuild Projects="$(NuRepWorkDir)/NuRep.csproj" Targets="Package" Properties="Configuration=Deploy;Platform=AnyCPU;_PackageTempDir=$(NuRepDropDir)"/>
   </Target>
 </Project>
