@@ -5,20 +5,23 @@
   <PropertyGroup>
     <RootDir>$(MSBuildProjectDirectory)/..</RootDir>
     <NuGet>$(RootDir)/.nuget/nuget.exe</NuGet>
+    <NuRepWorkDir>$(RootDir)/NuRep</NuRepWorkDir>
     <DropDir>$(RootDir)/bin</DropDir>
     <NuGetDropDir>$(DropDir)/NuGet</NuGetDropDir>
-    <NuRepWorkDir>$(RootDir)/NuRep</NuRepWorkDir>
+    <NuRepDropDir>$(DropDir)/NuRep</NuRepDropDir>
   </PropertyGroup>
 
   <Target Name="CreateDirectories">
     <MakeDir Directories="$(NuGetDropDir)" Condition="!Exists('$(NuGetDropDir)')" />
+    <MakeDir Directories="$(NuRepDropDir)" Condition="!Exists('$(NuRepDropDir)')" />
   </Target>
   
   <Target Name="BuildProjects">
-    <MSBuild Projects="$(NuRepWorkDir)/NuRep.csproj" Targets="Clean;Build" Properties="Configuration=Release;Platform=AnyCPU" />
+    <MSBuild Projects="$(NuRepWorkDir)/NuRep.csproj" Targets="Rebuild" Properties="Configuration=Release;Platform=AnyCPU" />
   </Target>
 
   <Target Name="CreatePackages">
-    <Exec Command="&quot;$(NuGet)&quot; pack NuRep.csproj -Symbols -Build -Properties &quot;Configuration=Release;Platform=AnyCPU&quot; -o &quot;$(NuGetDropDir)&quot;" WorkingDirectory="$(NuRepWorkDir)" />  
+    <Exec Command="&quot;$(NuGet)&quot; pack NuRep.csproj -Symbols -Build -Properties &quot;Configuration=Release;Platform=AnyCPU&quot; -o &quot;$(NuGetDropDir)&quot;" WorkingDirectory="$(NuRepWorkDir)" />
+    <MSBuild Projects="$(NuRepWorkDir)/NuRep.csproj" Targets="Package" Properties="Configuration=Release;Platform=AnyCPU;_PackageTempDir=$(NuRepDropDir)"/>
   </Target>
 </Project>
