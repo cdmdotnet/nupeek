@@ -10,10 +10,7 @@ namespace NuRep
 	{
 		public override void Load()
 		{
-
-
-			Kernel.Bind<ServerPackageRepository>().ToConstant(new ServerPackageRepository(NuRepConfiguration.SymbolPackagePath)).WhenInjectedInto<SymbolPackageService>();
-
+			Kernel.Bind<SymbolPackageService>().ToConstant(new SymbolPackageService(new ServerPackageRepository(NuRepConfiguration.SymbolPackagePath), Kernel.Get<IPackageAuthenticationService>()));
 			Kernel.Bind<ISymbolsPathResolver>().To<SymbolsPathResolver>();
 			Kernel.Bind<ISymbolPackagePathResolver>().To<SymbolPackagePathResolver>();
 			Kernel.Bind<IToolPathResolver>().To<ToolPathResolver>();
