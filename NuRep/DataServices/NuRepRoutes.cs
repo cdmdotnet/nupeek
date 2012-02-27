@@ -35,7 +35,7 @@ namespace NuRep
 
 
 			routes.MapDelegate("GetSymbols",
-			    "symbols/{prefix}/{*path}",
+			    "symbols/{*path}",
 			    new {httpMethod = new HttpMethodConstraint("GET")},
 			    context =>CreateSymbolService().GetSymbols(context));
 
