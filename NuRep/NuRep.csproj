@@ -98,6 +98,7 @@
     <Compile Include="DataServices\NuRepRoutes.cs" />
     <Compile Include="DataServices\NuGetRoutes.cs" />
     <Compile Include="DataServices\SymbolPackagePathResolver.cs" />
+    <Compile Include="DataServices\SymbolPackageService.cs" />
     <Compile Include="DataServices\SymbolService.cs" />
     <Compile Include="DataServices\SymbolsPathResolver.cs" />
     <Compile Include="DataServices\SymbolTools.cs" />

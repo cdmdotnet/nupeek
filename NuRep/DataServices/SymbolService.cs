@@ -19,7 +19,7 @@ namespace NuRep
 		private readonly SymbolTools symbolTools;
 
 
-		public SymbolService([Named("Default")]PackageService packageService, [Named("Symbols")]PackageService symbolPackageService, ISymbolsPathResolver symbolsPathResolver, ISymbolPackagePathResolver symbolPackagePathResolver, SymbolTools symbolTools)
+		public SymbolService(PackageService packageService, SymbolPackageService symbolPackageService, ISymbolsPathResolver symbolsPathResolver, ISymbolPackagePathResolver symbolPackagePathResolver, SymbolTools symbolTools)
 		{
 			this.packageService = packageService;
 			this.symbolPackageService = symbolPackageService;
