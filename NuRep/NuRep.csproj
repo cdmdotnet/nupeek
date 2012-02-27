@@ -111,10 +111,14 @@
     <Content Include="Packages\Readme.txt" />
     <Content Include="SymbolPackages\Readme.txt" />
     <Content Include="Symbols\Readme.txt" />
-    <Content Include="Tools\pdbstr.exe" />
-    <Content Include="Tools\srctool.exe" />
-    <Content Include="Tools\symsrv.dll" />
-    <Content Include="Tools\symstore.exe" />
+    <Content Include="Tools\x64\pdbstr.exe" />
+    <Content Include="Tools\x64\srctool.exe" />
+    <Content Include="Tools\x64\symsrv.dll" />
+    <Content Include="Tools\x64\symstore.exe" />
+    <Content Include="Tools\x86\pdbstr.exe" />
+    <Content Include="Tools\x86\srctool.exe" />
+    <Content Include="Tools\x86\symsrv.dll" />
+    <Content Include="Tools\x86\symstore.exe" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

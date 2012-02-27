@@ -1,4 +1,6 @@
+using System;
 using System.Configuration;
+using System.IO;
 using System.Web.Hosting;
 
 namespace NuRep
@@ -38,10 +40,9 @@ namespace NuRep
 			{
 				string path = GetSetting("toolsPath", "~/Tools");
 
-				if (path.StartsWith("~"))
-					return HostingEnvironment.MapPath(path);
+				string localPath = path.StartsWith("~") ? HostingEnvironment.MapPath(path) : path;
 
-				return path;
+				return Path.Combine(localPath, Environment.Is64BitProcess ? "x64" : "x86");
 			}
 		}
 
