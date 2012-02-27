@@ -112,10 +112,12 @@
     <Content Include="Packages\Readme.txt" />
     <Content Include="SymbolPackages\Readme.txt" />
     <Content Include="Symbols\Readme.txt" />
+    <Content Include="Tools\x64\dbghelp.dll" />
     <Content Include="Tools\x64\pdbstr.exe" />
     <Content Include="Tools\x64\srctool.exe" />
     <Content Include="Tools\x64\symsrv.dll" />
     <Content Include="Tools\x64\symstore.exe" />
+    <Content Include="Tools\x86\dbghelp.dll" />
     <Content Include="Tools\x86\pdbstr.exe" />
     <Content Include="Tools\x86\srctool.exe" />
     <Content Include="Tools\x86\symsrv.dll" />
