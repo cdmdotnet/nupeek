@@ -2,9 +2,9 @@
 
 NuRep is a NuGet repository that also serves symbols and sources.
 
-Install NuRep on your dev site, publish both nupkg and symbols.nupkg at http://myserver/NuRep
+Install NuRep on your dev site, publish both nupkg and symbols.nupkg at http://myserver/NuRep (the http path where you installed your application)
 
-Then add http://myserver/NuRep/api/v2 as package source, and http://myserver/NuRep/symbols as symbol file server.
+Then add http://myserver/NuRep/nuget as package source, and http://myserver/NuRep/symbols as symbol file server.
 
 Don't forget to Enable source server support and disable Just My code.
 
