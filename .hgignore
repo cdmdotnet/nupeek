@@ -10,3 +10,4 @@ NuRep/Packages/*.nupkg
 NuRep/Symbols/**
 packages/**
 bin/
+**.dotCover
