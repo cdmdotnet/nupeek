@@ -8,7 +8,7 @@ namespace NuRep
 	{
 		public string GetSymbolsPath(IPackage package, IPackageFile symbolFile)
 		{
-			string localPath = String.Format("temp/{0}.{1}/{2}", package.Id, package.Version, symbolFile.Path);
+			string localPath = String.Format(@"temp\{0}.{1}\{2}", package.Id, package.Version, symbolFile.Path);
 			return GetSymbolsPath(localPath);
 		}
 
