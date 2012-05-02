@@ -49,7 +49,7 @@ namespace NuRep
 
         private static bool IsSymbolPackage(ZipPackage package, IEnumerable<IPackageFile> symbolFiles)
         {
-            return symbolFiles.Any() || package.GetFiles("src").Any();
+            return symbolFiles.Any() && package.GetFiles("src").Any();
         }
 
         private void ProcessSymbolFile(IPackageFile symbolFile, ZipPackage package)
