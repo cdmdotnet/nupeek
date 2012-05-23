@@ -60,7 +60,7 @@ namespace NuRep
             {
                 var referencedSources = symbolTools.GetSources(tempSymbolFilePath).ToList();
 
-                var sourceFiles = new HashSet<string>(package.GetFiles("src").Select(f => f.Path).ToList());
+                var sourceFiles = new HashSet<string>(package.GetFiles("src").Select(f => f.Path.ToLowerInvariant()).ToList());
                 if (referencedSources.Any() && sourceFiles.Any())
                 {
                     var basePath = FindSourceBasePath(sourceFiles, referencedSources);
@@ -134,7 +134,7 @@ namespace NuRep
             var package = new ZipPackage(symbolPackagePathResolver.GetSymbolPackagePath(packageId, version));
 
             string directory = Path.GetDirectoryName(path);
-            var file = package.GetFiles(directory).FirstOrDefault(f => f.Path == path);
+            var file = package.GetFiles(directory).FirstOrDefault(f => string.Equals(f.Path, path, StringComparison.InvariantCultureIgnoreCase));
             var response = context.HttpContext.Response;
             if (file == null)
             {
