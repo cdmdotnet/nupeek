@@ -113,15 +113,19 @@ namespace NuRep
         {
             var path = (string)context.RouteData.Values["path"];
             var fullPath = symbolsPathResolver.GetSymbolsPath(path);
+            var expandedPath = symbolTools.ExpandSymbolFile(fullPath);
 
             var response = context.HttpContext.Response;
-            if (!File.Exists(fullPath))
+            if (!File.Exists(expandedPath))
             {
                 response.StatusCode = 404;
                 return;
             }
+
+            
+
             response.ContentType = "application/octet-stream";
-            response.WriteFile(fullPath);
+            response.WriteFile(expandedPath);
         }
 
         public void GetSource(RequestContext context)
