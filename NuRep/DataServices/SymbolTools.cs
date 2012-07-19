@@ -74,7 +74,7 @@ namespace NuRep
                 }
 
                 ExecuteToolNoValue("pdbstr", string.Format(" -w -p:\"{0}\" -i:\"{1}\" -s:srcsrv", symbolFile, indexFile));
-                ExecuteToolNoValue("symstore", string.Format(" add /f {0} /s {1} /t {2} /v {3}", symbolFile, symbolsPathResolver.GetSymbolsPath(), packageId, version));
+                ExecuteToolNoValue("symstore", string.Format(" add /f \"{0}\" /s \"{1}\" /t {2} /v {3}", symbolFile, symbolsPathResolver.GetSymbolsPath(), packageId, version));
             }
             finally
             {
