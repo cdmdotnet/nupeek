@@ -81,7 +81,7 @@ namespace NuRep
                 referencedSources[0],
                 (b, s) =>
                 {
-                    while ((!s.StartsWith(b) && b.Length > 0) || !sourceFiles.Contains(Path.Combine("src", s.Substring(b.Length))))
+                    while (b.Length > 0 && (!s.StartsWith(b) || !sourceFiles.Contains(Path.Combine("src", s.Substring(b.Length)))))
                         b = b.Substring(0, b.Length - 1);
                     return b;
                 });
