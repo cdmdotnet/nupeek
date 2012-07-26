@@ -28,8 +28,11 @@
             Use the command below to push packages to this feed using the nuget command line tool (nuget.exe).
             <% } %>
             <blockquote>
-                <strong>nuget push {package file} -s <%= Helpers.GetPushUrl(Request.Url, Request.ApplicationPath) %> {apikey}</strong>
+                <strong>nuget push myPackage.1.2.3.nupkg -s <%= Helpers.GetPushUrl(Request.Url, Request.ApplicationPath) %> <% = ConfigurationManager.AppSettings["apiKey"]%></strong>
             </blockquote>            
+            <blockquote>
+                <strong>nuget push myPackage.1.2.3.symbols.nupkg -s <%= Helpers.GetPushUrl(Request.Url, Request.ApplicationPath) %> <% = ConfigurationManager.AppSettings["apiKey"]%></strong>
+            </blockquote>
         </fieldset>
 
         <% if (Request.IsLocal) { %>
