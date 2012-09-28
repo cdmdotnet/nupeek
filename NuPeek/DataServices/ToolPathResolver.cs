@@ -1,12 +1,12 @@
 using System.IO;
 
-namespace NuRep
+namespace NuPeek.DataServices
 {
 	public class ToolPathResolver : IToolPathResolver
 	{
 		public string GetToolPath(string name)
 		{
-			var basePath = NuRepConfiguration.ToolsPath;
+			var basePath = NuPeekConfiguration.ToolsPath;
 			return Path.Combine(basePath, name);
 
 		}

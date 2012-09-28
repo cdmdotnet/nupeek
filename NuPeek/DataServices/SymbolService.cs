@@ -4,11 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Routing;
-using Ninject;
 using NuGet;
 using NuGet.Server;
 
-namespace NuRep
+namespace NuPeek.DataServices
 {
     public class SymbolService
     {

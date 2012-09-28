@@ -1,6 +1,6 @@
 using NuGet;
 
-namespace NuRep
+namespace NuPeek.DataServices
 {
 	public interface ISymbolsPathResolver
 	{

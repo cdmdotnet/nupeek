@@ -10,8 +10,8 @@
     <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NuRep</RootNamespace>
-    <AssemblyName>NuRep</AssemblyName>
+    <RootNamespace>NuPeek</RootNamespace>
+    <AssemblyName>NuPeek</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
@@ -97,9 +97,9 @@
     <Compile Include="DataServices\ISymbolPackagePathResolver.cs" />
     <Compile Include="DataServices\ISymbolsPathResolver.cs" />
     <Compile Include="DataServices\IToolPathResolver.cs" />
-    <Compile Include="DataServices\NuRepBinding.cs" />
-    <Compile Include="DataServices\NuRepConfiguration.cs" />
-    <Compile Include="DataServices\NuRepRoutes.cs" />
+    <Compile Include="DataServices\NuPeekBinding.cs" />
+    <Compile Include="DataServices\NuPeekConfiguration.cs" />
+    <Compile Include="DataServices\NuPeek.cs" />
     <Compile Include="DataServices\NuGetRoutes.cs" />
     <Compile Include="DataServices\SymbolPackagePathResolver.cs" />
     <Compile Include="DataServices\SymbolPackageService.cs" />

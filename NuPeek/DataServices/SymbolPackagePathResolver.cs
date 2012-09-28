@@ -1,12 +1,12 @@
 using System.IO;
 
-namespace NuRep
+namespace NuPeek.DataServices
 {
 	public class SymbolPackagePathResolver : ISymbolPackagePathResolver
 	{
 		public string GetSymbolPackagePath(string packageId, string version)
 		{
-			var basePath = NuRepConfiguration.SymbolPackagePath;
+			var basePath = NuPeekConfiguration.SymbolPackagePath;
 			return Path.Combine(basePath, packageId + "." + version + ".nupkg");
 
 		}

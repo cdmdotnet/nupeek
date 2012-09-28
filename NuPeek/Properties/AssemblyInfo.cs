@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("NuRep")]
+[assembly: AssemblyTitle("NuPeek")]
 [assembly: AssemblyDescription("NuGet repository with symbol and source server.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("thinkbeforecoding")]
-[assembly: AssemblyProduct("NuRep")]
+[assembly: AssemblyProduct("NuPeek")]
 [assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

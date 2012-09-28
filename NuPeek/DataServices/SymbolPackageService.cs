@@ -1,7 +1,7 @@
 using NuGet.Server;
 using NuGet.Server.Infrastructure;
 
-namespace NuRep
+namespace NuPeek.DataServices
 {
 	public class SymbolPackageService : PackageService
 	{

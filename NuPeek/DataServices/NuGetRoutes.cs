@@ -5,12 +5,13 @@ using Ninject;
 using NuGet.Server;
 using NuGet.Server.DataServices;
 using NuGet.Server.Infrastructure;
-using RouteMagic;
+using NuGetRoutes = NuPeek.DataServices.NuGetRoutes;
+
 #if DEBUG || DEPLOY
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(NuRep.NuGetRoutes), "Start")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(NuGetRoutes), "Start")]
 
-namespace NuRep {
+namespace NuPeek.DataServices {
     public static class NuGetRoutes {
         public static void Start() {
             MapRoutes(RouteTable.Routes);

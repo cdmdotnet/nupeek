@@ -1,4 +1,4 @@
-namespace NuRep
+namespace NuPeek.DataServices
 {
 	public interface ISymbolPackagePathResolver
 	{

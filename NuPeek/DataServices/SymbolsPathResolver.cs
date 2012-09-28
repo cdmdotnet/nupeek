@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using NuGet;
 
-namespace NuRep
+namespace NuPeek.DataServices
 {
 	public class SymbolsPathResolver : ISymbolsPathResolver
 	{
@@ -19,7 +19,7 @@ namespace NuRep
 
 		public string GetSymbolsPath()
 		{
-			return NuRepConfiguration.SymbolsPath;
+			return NuPeekConfiguration.SymbolsPath;
 		}
 	}
 }

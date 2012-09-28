@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Web;
-using System.Web.Hosting;
 using NuGet;
 
-namespace NuRep
+namespace NuPeek.DataServices
 {
     public class SymbolTools
     {

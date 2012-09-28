@@ -1,18 +1,18 @@
 ﻿using System.Web.Routing;
 using Ninject;
-using Ninject.Planning.Bindings;
 using NuGet.Server.Infrastructure;
+using NuPeek.DataServices;
 using RouteMagic;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(NuRep.NuRepRoutes), "Start")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(NuPeek.DataServices.NuPeek), "Start")]
 
-namespace NuRep
+namespace NuPeek.DataServices
 {
-	public class NuRepRoutes
+	public class NuPeek
 	{
 		public static void Start()
 		{
-			NinjectBootstrapper.Kernel.Load(new NuRepBinding());
+			NinjectBootstrapper.Kernel.Load(new NuPeekBinding());
 
 			MapRoutes(RouteTable.Routes);
 		}

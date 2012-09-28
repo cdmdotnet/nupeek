@@ -3,9 +3,9 @@ using System.Configuration;
 using System.IO;
 using System.Web.Hosting;
 
-namespace NuRep
+namespace NuPeek.DataServices
 {
-	public static class NuRepConfiguration
+	public static class NuPeekConfiguration
 	{
 
 		public static string SymbolPackagePath
