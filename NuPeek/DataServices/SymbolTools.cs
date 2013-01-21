@@ -41,6 +41,19 @@ namespace NuPeek.DataServices
             process.WaitForExit();
         }
 
+        public string ExpandSymbolFile(string requestedSymbolFile)
+        {
+            string result = requestedSymbolFile; // default to given path
+            var compressedPath = requestedSymbolFile.Substring(0, requestedSymbolFile.Length-1) + "_";
+
+            if(!File.Exists(requestedSymbolFile) &&
+                File.Exists(compressedPath))
+            {
+                ExecuteToolNoValue("expand", String.Format(" \"{0}\" \"{1}\"", compressedPath, requestedSymbolFile));
+            }
+
+            return result;
+        }
 
         public void MapSources(IPackage package, string symbolFile, IEnumerable<string> referencedSources, Func<string, string> transform)
         {
@@ -73,7 +86,7 @@ namespace NuPeek.DataServices
                 }
 
                 ExecuteToolNoValue("pdbstr", string.Format(" -w -p:\"{0}\" -i:\"{1}\" -s:srcsrv", symbolFile, indexFile));
-                ExecuteToolNoValue("symstore", string.Format(" add /f \"{0}\" /s \"{1}\" /t {2} /v {3}", symbolFile, symbolsPathResolver.GetSymbolsPath(), packageId, version));
+                ExecuteToolNoValue("symstore", string.Format(" add /compress /f \"{0}\" /s \"{1}\" /t {2} /v {3}", symbolFile, symbolsPathResolver.GetSymbolsPath(), packageId, version));
             }
             finally
             {
