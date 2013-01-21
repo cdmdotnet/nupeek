@@ -5,9 +5,10 @@ using Ninject;
 using NuGet.Server;
 using NuGet.Server.DataServices;
 using NuGet.Server.Infrastructure;
-using NuGetRoutes = NuPeek.DataServices.NuGetRoutes;
 
 #if DEBUG || DEPLOY
+
+using NuGetRoutes = NuPeek.DataServices.NuGetRoutes;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(NuGetRoutes), "Start")]
 
