@@ -57,13 +57,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net40\Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="NuGet.Core, Version=2.0.30619.9119, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="NuGet.Core, Version=2.2.31210.9045, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NuGet.Core.2.0.1\lib\net40-Client\NuGet.Core.dll</HintPath>
+      <HintPath>..\packages\Nuget.Core.2.2.0\lib\net40-Client\NuGet.Core.dll</HintPath>
     </Reference>
-    <Reference Include="NuGet.Server, Version=2.0.30619.9119, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="NuGet.Server, Version=2.2.31210.9045, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NuGet.Server.2.0.1\lib\net40\NuGet.Server.dll</HintPath>
+      <HintPath>..\packages\NuGet.Server.2.2.2\lib\net40\NuGet.Server.dll</HintPath>
     </Reference>
     <Reference Include="RouteMagic, Version=1.2.0.0, Culture=neutral, PublicKeyToken=84b59be021aa4cee, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -90,9 +90,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="WebActivator, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="WebActivator, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WebActivator.1.5.1\lib\net40\WebActivator.dll</HintPath>
+      <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
