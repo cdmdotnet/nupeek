@@ -11,3 +11,4 @@ NuRep/Symbols/**
 packages/**
 bin/
 **.dotCover
+NuPeek/App_Data/error*
