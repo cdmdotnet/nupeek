@@ -31,14 +31,13 @@ namespace NuPeek.DataServices
         {
             var request = context.Request;
             var stream = request.Files.Count > 0 ? request.Files[0].InputStream : request.InputStream;
-            var package = new ZipPackage(stream);
+	        var clonedStream = CloneStream(stream);
+			var package = new ZipPackage(clonedStream); // provide a cloned stream because ZipPackage now dispose it
 
             var symbolFiles = package.GetFiles("lib").Where(f => Path.GetExtension(f.Path) == ".pdb").ToList();
 
             foreach (var symbolFile in symbolFiles)
                 ProcessSymbolFile(symbolFile, package);
-
-            stream.Position = 0;
 
             if (IsSymbolPackage(package, symbolFiles))
                 symbolPackageService.CreatePackage(context);
@@ -46,7 +45,16 @@ namespace NuPeek.DataServices
                 packageService.CreatePackage(context);
         }
 
-        private static bool IsSymbolPackage(ZipPackage package, IEnumerable<IPackageFile> symbolFiles)
+	    private static MemoryStream CloneStream(Stream stream)
+	    {
+		    var clonedStream = new MemoryStream();
+		    stream.CopyTo(clonedStream);
+			stream.Position = 0;
+			clonedStream.Position = 0;
+		    return clonedStream;
+	    }
+
+	    private static bool IsSymbolPackage(ZipPackage package, IEnumerable<IPackageFile> symbolFiles)
         {
             return symbolFiles.Any() && package.GetFiles("src").Any();
         }
