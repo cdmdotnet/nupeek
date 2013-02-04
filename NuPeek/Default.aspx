@@ -40,6 +40,7 @@
             To add packages to the feed put package files (.nupkg files) in the folder "<% = NuGet.Server.Infrastructure.PackageUtility.PackagePhysicalPath%>".
         </p>
         <% } %>
+        <p>In case of problem, check the <a href="https://bitbucket.org/thinkbeforecoding/nupeek/wiki/Troubleshooting">troubleshooting</a> section on the project Wiki</p>
     </div>
 </body>
 </html>
