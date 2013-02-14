@@ -33,6 +33,10 @@
             <blockquote>
                 <strong>nuget push myPackage.1.2.3.symbols.nupkg -s <%= Helpers.GetPushUrl(Request.Url, Request.ApplicationPath) %> <% = ConfigurationManager.AppSettings["apiKey"]%></strong>
             </blockquote>
+            Use the address below in the symbols settings of Visual Studio:
+            <blockquote>
+                <strong><%= Helpers.GetBaseUrl(Request.Url, Request.ApplicationPath) + "symbols"  %></strong>
+            </blockquote> 
         </fieldset>
 
         <% if (Request.IsLocal) { %>
