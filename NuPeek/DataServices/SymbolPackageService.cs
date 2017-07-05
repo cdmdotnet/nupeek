@@ -1,5 +1,5 @@
-using NuGet.Server;
 using NuGet.Server.Infrastructure;
+using NuGet.Server.Publishing;
 
 namespace NuPeek.DataServices
 {
