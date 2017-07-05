@@ -1,10 +1,7 @@
 ﻿using System.Web.Routing;
 using Ninject;
-using NuGet.Server.Infrastructure;
-using NuPeek.DataServices;
+using NuPeek.App_Start;
 using RouteMagic;
-
-[assembly: WebActivator.PreApplicationStartMethod(typeof(NuPeek.DataServices.NuPeek), "Start")]
 
 namespace NuPeek.DataServices
 {
@@ -12,8 +9,6 @@ namespace NuPeek.DataServices
 	{
 		public static void Start()
 		{
-			NinjectBootstrapper.Kernel.Load(new NuPeekBinding());
-
 			MapRoutes(RouteTable.Routes);
 		}
 
@@ -35,20 +30,20 @@ namespace NuPeek.DataServices
 
 
 			routes.MapDelegate("GetSymbols",
-			    "symbols/{*path}",
-			    new {httpMethod = new HttpMethodConstraint("GET")},
-			    context =>CreateSymbolService().GetSymbols(context));
+				"symbols/{*path}",
+				new {httpMethod = new HttpMethodConstraint("GET")},
+				context =>CreateSymbolService().GetSymbols(context));
 
 			routes.MapDelegate("GetSource",
 				"source/{id}/{version}/{*path}",
-			    new {httpMethod = new HttpMethodConstraint("GET")},
+				new {httpMethod = new HttpMethodConstraint("GET")},
 				context => CreateSymbolService().GetSource(context));
 		}
 
 
 		private static SymbolService CreateSymbolService()
 		{
-			return NinjectBootstrapper.Kernel.Get<SymbolService>();
+			return NinjectWebCommon.bootstrapper.Kernel.Get<SymbolService>();
 		}
 	}
 }
