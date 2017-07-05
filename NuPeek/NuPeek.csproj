@@ -160,7 +160,9 @@
     <Content Include="Tools\x86\srctool.exe" />
     <Content Include="Tools\x86\symsrv.dll" />
     <Content Include="Tools\x86\symstore.exe" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -170,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

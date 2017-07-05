@@ -3,6 +3,7 @@ using Ninject.Modules;
 using NuGet;
 using NuGet.Server.Infrastructure;
 using NuGet.Server.Logging;
+using NuGet.Server.Publishing;
 
 namespace NuPeek.DataServices
 {
@@ -10,22 +11,33 @@ namespace NuPeek.DataServices
 	{
 		public override void Load()
 		{
-			Kernel.Bind<SymbolPackageService>().ToConstant
+			Bind<ISymbolsPathResolver>().To<SymbolsPathResolver>();
+			Bind<ISymbolPackagePathResolver>().To<SymbolPackagePathResolver>();
+			Bind<IToolPathResolver>().To<ToolPathResolver>();
+			Bind<IPackageAuthenticationService>().To<PackageAuthenticationService>();
+
+			var serverPackageRepository = new ServerPackageRepository
 			(
-				new SymbolPackageService
-				(
-					new ServerPackageRepository
-					(
-						NuPeekConfiguration.SymbolPackagePath,
-						new CryptoHashProvider(),
-						new TraceLogger()
-					),
-					Kernel.Get<IPackageAuthenticationService>()
-				)
+				NuPeekConfiguration.SymbolPackagePath,
+				new CryptoHashProvider(),
+				new TraceLogger()
 			);
-			Kernel.Bind<ISymbolsPathResolver>().To<SymbolsPathResolver>();
-			Kernel.Bind<ISymbolPackagePathResolver>().To<SymbolPackagePathResolver>();
-			Kernel.Bind<IToolPathResolver>().To<ToolPathResolver>();
+			Bind<IServerPackageRepository>().ToConstant(serverPackageRepository);
+			var symbolPackageService = new SymbolPackageService
+			(
+				Kernel.Get<IServerPackageRepository>(),
+				Kernel.Get<IPackageAuthenticationService>()
+			);
+			Bind<SymbolPackageService>().ToConstant(symbolPackageService);
+			var symbolService = new SymbolService
+			(
+				Kernel.Get<PackageService>(),
+				symbolPackageService,
+				Kernel.Get<ISymbolsPathResolver>(),
+				Kernel.Get<ISymbolPackagePathResolver>(),
+				Kernel.Get<SymbolTools>()
+			);
+			Bind<SymbolService>().ToConstant(symbolService);
 		}
 	}
 }

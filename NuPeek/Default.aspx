@@ -16,7 +16,7 @@
         <p>
             Click <a href="<%= VirtualPathUtility.ToAbsolute("~/nuget/Packages") %>">here</a> to view your packages.
         </p>
-        <fieldset style="width:800px">
+        <fieldset>
             <legend><strong>Repository URLs</strong></legend>
             In the package manager settings, add the following URL to the list of 
             Package Sources:
@@ -29,8 +29,15 @@
             Use the command below to push packages to this feed using the <a href="https://www.nuget.org/downloads">NuGet command line tool</a> (nuget.exe).
             <% } %>
             <blockquote>
-                <strong>nuget.exe push {package file} {apikey} -Source <%= Helpers.GetPushUrl(Request.Url, Request.ApplicationPath) %></strong>
-            </blockquote>            
+                <strong>nuget.exe push myPackage.1.2.3.nupkg <%= Request.IsLocal ? ConfigurationManager.AppSettings["apiKey"] : "{apikey}" %> -s <%= Helpers.GetPushUrl(Request.Url, Request.ApplicationPath) %></strong>
+            </blockquote>
+            <blockquote>
+                <strong>nuget.exe push myPackage.1.2.3.symbols.nupkg <%= Request.IsLocal ? ConfigurationManager.AppSettings["apiKey"] : "{apikey}" %> -s <%= Helpers.GetPushUrl(Request.Url, Request.ApplicationPath) %></strong>
+            </blockquote>
+            Use the address below in the symbols settings of Visual Studio:
+            <blockquote>
+                <strong><%= Helpers.GetBaseUrl(Request.Url, Request.ApplicationPath) + "symbols"  %></strong>
+            </blockquote> 
         </fieldset>
 
         <% if (Request.IsLocal) { %>

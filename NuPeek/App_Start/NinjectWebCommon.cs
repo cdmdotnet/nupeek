@@ -1,3 +1,6 @@
+using System.Reflection;
+using NuPeek.DataServices;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NuPeek.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NuPeek.App_Start.NinjectWebCommon), "Stop")]
 
@@ -62,6 +65,7 @@ namespace NuPeek.App_Start
 		/// <param name="kernel">The kernel.</param>
 		private static void RegisterServices(IKernel kernel)
 		{
+			kernel.Load(new[] {new NuPeekBinding()});
 			// Tell ASP.NET MVC 3 to use our Ninject DI Container 
 //			DependencyResolver.SetResolver(new Ninject.Web.Mvc.NinjectDependencyResolver(kernel));
 		}
