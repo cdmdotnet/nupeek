@@ -140,14 +140,23 @@ namespace NuPeek.DataServices
 			var version = context.RouteData.Values["version"].ToString();
 			var path = Path.Combine("src", context.RouteData.Values["path"].ToString().Replace('/', '\\'));
 
+			var response = context.HttpContext.Response;
 
-			var package = new ZipPackage(symbolPackagePathResolver.GetSymbolPackagePath(packageId, version));
+			ZipPackage package;
+			try
+			{
+				package = new ZipPackage(symbolPackagePathResolver.GetSymbolSourcePath(packageId, version));
+			}
+			catch (FileNotFoundException)
+			{
+				response.StatusCode = 404;
+				return;
+			}
 
 			string directory = Path.GetDirectoryName(path);
 			var file =
 				package.GetFiles(directory)
 					.FirstOrDefault(f => string.Equals(f.Path, path, StringComparison.InvariantCultureIgnoreCase));
-			var response = context.HttpContext.Response;
 			if (file == null)
 			{
 				response.StatusCode = 404;

@@ -10,5 +10,11 @@ namespace NuPeek.DataServices
 			return Path.Combine(basePath, packageId + "." + version + ".nupkg");
 
 		}
+
+		public string GetSymbolSourcePath(string packageId, string version)
+		{
+			var basePath = Path.Combine(NuPeekConfiguration.SymbolPackagePath, packageId, version);
+			return Path.Combine(basePath, packageId + "." + version + ".nupkg");
+		}
 	}
 }

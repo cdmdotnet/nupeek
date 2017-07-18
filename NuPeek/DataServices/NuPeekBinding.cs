@@ -18,14 +18,19 @@ namespace NuPeek.DataServices
 
 			var serverPackageRepository = new ServerPackageRepository
 			(
-				NuPeekConfiguration.SymbolPackagePath,
+				NuPeekConfiguration.NugetPackagePath,
 				new CryptoHashProvider(),
 				new TraceLogger()
 			);
 			Bind<IServerPackageRepository>().ToConstant(serverPackageRepository);
 			var symbolPackageService = new SymbolPackageService
 			(
-				Kernel.Get<IServerPackageRepository>(),
+				new ServerPackageRepository
+				(
+					NuPeekConfiguration.SymbolPackagePath,
+					new CryptoHashProvider(),
+					new TraceLogger()
+				),
 				Kernel.Get<IPackageAuthenticationService>()
 			);
 			Bind<SymbolPackageService>().ToConstant(symbolPackageService);

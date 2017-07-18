@@ -8,6 +8,19 @@ namespace NuPeek.DataServices
 	public static class NuPeekConfiguration
 	{
 
+		public static string NugetPackagePath
+		{
+			get
+			{
+				string path = GetSetting("packagesPath", "~/Packages");
+
+				if (path.StartsWith("~"))
+					return HostingEnvironment.MapPath(path);
+
+				return path;
+			}
+		}
+
 		public static string SymbolPackagePath
 		{
 			get
